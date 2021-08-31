@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Models
 {
-    public class Class
+    public class Buyer  
     {
+        public int BuyerID { get; set; }
+        public int UserID { get; }
+
+
     }
+
 }
