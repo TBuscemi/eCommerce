@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("api/Cart")]
+    [Microsoft.AspNetCore.Components.Route("api/Buyer")]
     [ApiController]
-    public class CartController : ControllerBase
+    public class BuyerController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public CartController(ApplicationDbContext context)
+        public BuyerController(ApplicationDbContext context)
         {
             _context = context;
         }
+
     }
 }

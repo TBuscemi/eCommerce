@@ -13,14 +13,12 @@ namespace eCommerceStarterCode.Models
 
         [ForeignKey("Seller")]
         [Required]
-        public int SellerID { get; }
+        public int SellerID { get; set; }
         public Seller Seller { get; set; }
 
         [ForeignKey("Product")]
         [Required]
-        public int ProductID { get; }
+        public int ProductID { get; set; }
         public Product Product { get; set; }
-
-
     }
 }

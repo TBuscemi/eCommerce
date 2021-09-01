@@ -19,6 +19,10 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
+        
+        
+        
+        
         // <baseurl>/api/examples/user
         [HttpGet("user"), Authorize]
         public IActionResult GetCurrentUser()
