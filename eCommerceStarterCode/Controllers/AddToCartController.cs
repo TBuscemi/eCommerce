@@ -8,14 +8,15 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("api/SellerUpdateProduct")]
+    [Microsoft.AspNetCore.Components.Route("api/AddToCart")]
     [ApiController]
-    public class SellerUpdateProductController : ControllerBase
+    public class AddToCartController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public SellerUpdateProductController(ApplicationDbContext context)
+        public AddToCartController(ApplicationDbContext context)
         {
             _context = context;
         }
+
     }
 }
