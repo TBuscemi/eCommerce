@@ -8,8 +8,8 @@ namespace eCommerceStarterCode.Models
     public class AddToCart
     {
         public int ItemID { get; set; }
-        public int CartID { get; }
-        public int ProductID { get; }
+        public int CartID { get; set; }
+        public int ProductID { get; set; }
 
     }
 }

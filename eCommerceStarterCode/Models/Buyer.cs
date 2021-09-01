@@ -8,7 +8,7 @@ namespace eCommerceStarterCode.Models
     public class Buyer  
     {
         public int BuyerID { get; set; }
-        public int UserID { get; }
+        public int UserID { get; set; }
 
 
     }

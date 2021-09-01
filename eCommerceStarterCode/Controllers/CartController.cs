@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Controllers
 {
-    public class ShoppingCartController
+    public class CartController
     {
     }
 }
+    

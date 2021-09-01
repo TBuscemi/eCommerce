@@ -20,19 +20,21 @@ namespace eCommerceStarterCode.Controllers
         {
             _context = context;
         }
+        
+        
         // GET api/product
-        [HttpGet]
-        public IActionResult GetAllProducts()
+        [HttpGet]      
+        public IActionResult GetAllProduct() 
         {
             // get all products
-            var products = _context.Products;
-            return Ok(products);
+            var productID = _context.UserLogins;
+            return Ok(productID);
         }
         // POST api/addnewproduct
         [HttpPost("add")]
         public IActionResult Post([FromBody] Product value)
         {
-            _context.Products.Add(value);
+            _context.Product.Add(value);
             _context.SaveChanges();
             return StatusCode(201, value);
         }

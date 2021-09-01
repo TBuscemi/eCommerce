@@ -8,8 +8,8 @@ namespace eCommerceStarterCode.Models
     public class SellerUpdateProduct
     {
         public int NewProductID { get; set; }
-        public int SellerID { get; }
-        public int ProductID { get; }
+        public int SellerID { get; set; }
+        public int ProductID { get; set; }
 
 
     }

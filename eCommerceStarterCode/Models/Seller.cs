@@ -8,6 +8,6 @@ namespace eCommerceStarterCode.Models
     public class Seller
     {
         public int SellerID { get; set; }
-        public int UserID { get;}
+        public int UserID { get; set; }
     }
 }
