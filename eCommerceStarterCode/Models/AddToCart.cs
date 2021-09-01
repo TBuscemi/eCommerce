@@ -8,8 +8,15 @@ namespace eCommerceStarterCode.Models
     public class AddToCart
     {
         public int ItemID { get; set; }
-        public int CartID { get; set; }
-        public int ProductID { get; set; }
 
+        [ForeignKey("Cart")]
+        [Required]
+        public int CartID { get; set; }
+        public Cart Cart { get; set; }
+
+        [ForeignKey("Product")]
+        [Required]
+        public int ProductID { get; set; }
+        public Product Product { get; set; }
     }
 }
