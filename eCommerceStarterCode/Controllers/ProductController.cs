@@ -34,5 +34,21 @@ namespace eCommerceStarterCode.Controllers
             var products = _context.Products;
             return Ok(products);
         }
+
+        [HttpGet("{Id}")]
+        public IActionResult GetSingleProduct(int Id)
+        {
+            var product = _context.Products.Find(Id);
+            return Ok(product);
+        }
+
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteProduct(int Id)
+        {
+            var productToDelete = _context.Products.Find(Id);
+            _context.Products.Remove(productToDelete);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
 }
