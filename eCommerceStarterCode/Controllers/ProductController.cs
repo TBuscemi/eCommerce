@@ -62,6 +62,9 @@ namespace eCommerceStarterCode.Controllers
             productToUpdate.ProductReview = value.ProductReview;
             productToUpdate.ProductThumbnail = value.ProductThumbnail;
             productToUpdate.ProductRating = value.ProductRating;
+            _context.Update(productToUpdate);
+            _context.SaveChanges();
+            return Ok();
 
         }
     }
