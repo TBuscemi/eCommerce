@@ -13,6 +13,17 @@ namespace eCommerceStarterCode.Data
 
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<AddToCart> AddToCarts { get; set; }
+        public DbSet<Buyer> Buyers { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
+        public DbSet<SellerUpdateProduct> SellerUpdateProducts { get; set; }
+        public DbSet<User> Users { get; set; }
+
+
+
+
+
 
 
 
