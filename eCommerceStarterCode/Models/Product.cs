@@ -11,7 +11,6 @@ namespace eCommerceStarterCode.Models
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public int ProductPrice { get; set; }
-        public int ProductStock { get; set; }
         public string ProductThumbnail { get; set; }
         public string ProductReview { get; set; }
         public int ProductRating { get; set; }

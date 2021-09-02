@@ -50,5 +50,19 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return Ok();
         }
+
+        [HttpPut]
+        public IActionResult UpdateProduct([FromBody] Product value)
+        {
+            Product productToUpdate = _context.Products.Find(value.ProductID);
+            productToUpdate.ProductName = value.ProductName;
+            productToUpdate.ProductDescription = value.ProductDescription;
+            productToUpdate.ProductPrice = value.ProductPrice;
+            productToUpdate.ProductCategory = value.ProductCategory;
+            productToUpdate.ProductReview = value.ProductReview;
+            productToUpdate.ProductThumbnail = value.ProductThumbnail;
+            productToUpdate.ProductRating = value.ProductRating;
+
+        }
     }
 }
