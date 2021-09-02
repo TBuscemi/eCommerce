@@ -9,6 +9,7 @@ namespace eCommerceStarterCode.Models
 {
     public class AddToCart
     {
+        [Key]
         public int ItemID { get; set; }
 
         [ForeignKey("Cart")]

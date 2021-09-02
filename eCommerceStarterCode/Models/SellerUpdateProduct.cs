@@ -9,6 +9,7 @@ namespace eCommerceStarterCode.Models
 {
     public class SellerUpdateProduct
     {
+        [Key]
         public int NewProductID { get; set; }
 
         [ForeignKey("Seller")]

@@ -13,7 +13,7 @@ namespace eCommerceStarterCode.Models
 
         [ForeignKey("User")]
         [Required]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
         public User User { get; set; }
     }
 }
