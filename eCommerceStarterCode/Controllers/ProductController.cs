@@ -27,15 +27,12 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return StatusCode(201, value);
         }
+
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            var products = _context.Products;
+            return Ok(products);
+        }
     }
 }
-
-    //        // GET api/product
-    //        [HttpGet]      
-    //        public IActionResult GetAllProduct() 
-    //        {
-    //            // get all products
-    //            var productID = _context.UserLogins;
-    //            return Ok(productID);
-    //        }
-    // POST api/addnewproduct
