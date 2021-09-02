@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eCommerceStarterCode.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace eCommerceStarterCode.Controllers
 {
@@ -16,6 +18,30 @@ namespace eCommerceStarterCode.Controllers
         public CartController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        public IActionResult GetAllCarts()
+        {
+            var shoppingCarts = _context.Carts;
+            return Ok(shoppingCarts);
+
+        }
+
+        [HttpGet("{Id}")]
+        public IActionResult GetSingleCart(int Id)
+        {
+            var shoppingCart = _context.Carts.Find(Id);
+            return Ok(shoppingCart);
+        }
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteCart(int Id)
+        {
+            var DeleteCart = _context.Carts.Find(Id);
+            _context.Carts.Remove(DeleteCart);
+            _context.SaveChanges();
+            return Ok();
+
         }
     }
 }

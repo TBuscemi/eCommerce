@@ -27,15 +27,45 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return StatusCode(201, value);
         }
+
+        [HttpGet]
+        public IActionResult GetAllProducts()
+        {
+            var products = _context.Products;
+            return Ok(products);
+        }
+
+        [HttpGet("{Id}")]
+        public IActionResult GetSingleProduct(int Id)
+        {
+            var product = _context.Products.Find(Id);
+            return Ok(product);
+        }
+
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteProduct(int Id)
+        {
+            var productToDelete = _context.Products.Find(Id);
+            _context.Products.Remove(productToDelete);
+            _context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPut]
+        public IActionResult UpdateProduct([FromBody] Product value)
+        {
+            Product productToUpdate = _context.Products.Find(value.ProductID);
+            productToUpdate.ProductName = value.ProductName;
+            productToUpdate.ProductDescription = value.ProductDescription;
+            productToUpdate.ProductPrice = value.ProductPrice;
+            productToUpdate.ProductCategory = value.ProductCategory;
+            productToUpdate.ProductReview = value.ProductReview;
+            productToUpdate.ProductThumbnail = value.ProductThumbnail;
+            productToUpdate.ProductRating = value.ProductRating;
+            _context.Update(productToUpdate);
+            _context.SaveChanges();
+            return Ok();
+
+        }
     }
 }
-
-    //        // GET api/product
-    //        [HttpGet]      
-    //        public IActionResult GetAllProduct() 
-    //        {
-    //            // get all products
-    //            var productID = _context.UserLogins;
-    //            return Ok(productID);
-    //        }
-    // POST api/addnewproduct
