@@ -7,10 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using eCommerceStarterCode.Models;
 using Microsoft.AspNetCore.Http;
+using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace eCommerceStarterCode.Controllers
 {
-    [Microsoft.AspNetCore.Components.Route("api/Cart")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CartController : ControllerBase
     {
@@ -21,7 +22,7 @@ namespace eCommerceStarterCode.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllCarts()
+        public IActionResult GetAll()
         {
             var shoppingCarts = _context.Carts;
             return Ok(shoppingCarts);
@@ -42,6 +43,14 @@ namespace eCommerceStarterCode.Controllers
             _context.SaveChanges();
             return Ok();
 
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Cart value)
+        {
+            _context.Carts.Add(value);
+            _context.SaveChanges();
+            return StatusCode(201, value);
         }
     }
 }
