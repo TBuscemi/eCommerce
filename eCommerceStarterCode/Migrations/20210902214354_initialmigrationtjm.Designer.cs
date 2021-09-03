@@ -10,15 +10,24 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210902214354_initialmigrationtjm.Designer.cs
     [Migration("20210902214354_initialmigrationtjm")]
     partial class initialmigrationtjm
+=======
+    [Migration("20210903024146_initialmigration")]
+    partial class initialmigration
+>>>>>>> 4ff61d4925719d23c830dbef5d4a2b56f2ad1b63:eCommerceStarterCode/Migrations/20210903024146_initialmigration.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
+<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210902214354_initialmigrationtjm.Designer.cs
                 .HasAnnotation("ProductVersion", "5.0.9")
+=======
+                .HasAnnotation("ProductVersion", "5.0.6")
+>>>>>>> 4ff61d4925719d23c830dbef5d4a2b56f2ad1b63:eCommerceStarterCode/Migrations/20210903024146_initialmigration.Designer.cs
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -50,15 +59,25 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
+<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210902214354_initialmigrationtjm.Designer.cs
                             Id = "99b44f4b-f389-4da2-9115-bf1929f76e5d",
                             ConcurrencyStamp = "68cba88b-b42c-4948-a62b-fbd6f46dfd9e",
+=======
+                            Id = "eaa8e8d4-8596-40dc-ad5b-175b3c234c2f",
+                            ConcurrencyStamp = "e005b6df-f65d-4ee8-a856-afa700e3fcb7",
+>>>>>>> 4ff61d4925719d23c830dbef5d4a2b56f2ad1b63:eCommerceStarterCode/Migrations/20210903024146_initialmigration.Designer.cs
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
+<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210902214354_initialmigrationtjm.Designer.cs
                             Id = "e4c62a9f-d3b9-4580-a630-87e1641b5707",
                             ConcurrencyStamp = "49ca7a9a-07cd-44ec-8305-6ae7ddda0635",
+=======
+                            Id = "73542959-71f0-416a-874c-ab8db7f832b7",
+                            ConcurrencyStamp = "a29b3d28-1e49-47ba-82ad-79ce063ace37",
+>>>>>>> 4ff61d4925719d23c830dbef5d4a2b56f2ad1b63:eCommerceStarterCode/Migrations/20210903024146_initialmigration.Designer.cs
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -187,7 +206,11 @@ namespace eCommerceStarterCode.Migrations
 
                     b.HasIndex("ProductID");
 
+<<<<<<< HEAD:eCommerceStarterCode/Migrations/20210902214354_initialmigrationtjm.Designer.cs
                     b.ToTable("AddToCart");
+=======
+                    b.ToTable("AddToCarts");
+>>>>>>> 4ff61d4925719d23c830dbef5d4a2b56f2ad1b63:eCommerceStarterCode/Migrations/20210903024146_initialmigration.Designer.cs
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.Buyer", b =>
