@@ -10,15 +10,15 @@ using eCommerceStarterCode.Data;
 namespace eCommerceStarterCode.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210902133509_initialmigration")]
-    partial class initialmigration
+    [Migration("20210902214354_initialmigrationtjm")]
+    partial class initialmigrationtjm
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -50,15 +50,15 @@ namespace eCommerceStarterCode.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dd129ca6-789f-4d7c-9879-09138d7a74dd",
-                            ConcurrencyStamp = "8f97fdc7-589b-4aef-ba3d-294a2eb5741d",
+                            Id = "99b44f4b-f389-4da2-9115-bf1929f76e5d",
+                            ConcurrencyStamp = "68cba88b-b42c-4948-a62b-fbd6f46dfd9e",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "ae6153bf-43e2-47af-a95a-98ddc6fee1d3",
-                            ConcurrencyStamp = "9fe0f324-740e-42a7-9355-5b75283f6cd7",
+                            Id = "e4c62a9f-d3b9-4580-a630-87e1641b5707",
+                            ConcurrencyStamp = "49ca7a9a-07cd-44ec-8305-6ae7ddda0635",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -168,6 +168,75 @@ namespace eCommerceStarterCode.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("eCommerceStarterCode.Models.AddToCart", b =>
+                {
+                    b.Property<int>("ItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CartID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItemID");
+
+                    b.HasIndex("CartID");
+
+                    b.HasIndex("ProductID");
+
+                    b.ToTable("AddToCart");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Buyer", b =>
+                {
+                    b.Property<int>("BuyerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("BuyerID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Buyers");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Cart", b =>
+                {
+                    b.Property<int>("CartID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BuyerID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Thumbnail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
+
+                    b.HasKey("CartID");
+
+                    b.HasIndex("BuyerID");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("eCommerceStarterCode.Models.Product", b =>
                 {
                     b.Property<int>("ProductID")
@@ -193,15 +262,52 @@ namespace eCommerceStarterCode.Migrations
                     b.Property<string>("ProductReview")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductStock")
-                        .HasColumnType("int");
-
                     b.Property<string>("ProductThumbnail")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductID");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Seller", b =>
+                {
+                    b.Property<int>("SellerID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("SellerID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Sellers");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.SellerUpdateProduct", b =>
+                {
+                    b.Property<int>("NewProductID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SellerID")
+                        .HasColumnType("int");
+
+                    b.HasKey("NewProductID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("SellerID");
+
+                    b.ToTable("SellerUpdateProducts");
                 });
 
             modelBuilder.Entity("eCommerceStarterCode.Models.User", b =>
@@ -276,8 +382,8 @@ namespace eCommerceStarterCode.Migrations
                     b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
@@ -348,6 +454,77 @@ namespace eCommerceStarterCode.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.AddToCart", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.Cart", "Cart")
+                        .WithMany()
+                        .HasForeignKey("CartID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerceStarterCode.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Buyer", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Cart", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.Buyer", "Buyer")
+                        .WithMany()
+                        .HasForeignKey("BuyerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Buyer");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.Seller", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eCommerceStarterCode.Models.SellerUpdateProduct", b =>
+                {
+                    b.HasOne("eCommerceStarterCode.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerceStarterCode.Models.Seller", "Seller")
+                        .WithMany()
+                        .HasForeignKey("SellerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Seller");
                 });
 #pragma warning restore 612, 618
         }
