@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace eCommerceStarterCode.Models
 {
-    public class Buyer  
+    public class Order
     {
-        public int BuyerID { get; set; }
-
+        public int OrderId { get; set; }
         [ForeignKey("User")]
-        [Required]
-        public string UserID { get; set; }
+        public string UserId { get; set; }
         public User User { get; set; }
     }
 }
-
-

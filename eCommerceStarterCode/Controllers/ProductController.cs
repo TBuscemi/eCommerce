@@ -21,7 +21,7 @@ namespace eCommerceStarterCode.Controllers
             _context = context;
         }
         [HttpPost]
-        public IActionResult Post([FromBody] Product value)
+        public IActionResult NewProduct([FromBody] Product value)
         {
             _context.Products.Add(value);
             _context.SaveChanges();
@@ -59,9 +59,6 @@ namespace eCommerceStarterCode.Controllers
             productToUpdate.ProductDescription = value.ProductDescription;
             productToUpdate.ProductPrice = value.ProductPrice;
             productToUpdate.ProductCategory = value.ProductCategory;
-            productToUpdate.ProductReview = value.ProductReview;
-            productToUpdate.ProductThumbnail = value.ProductThumbnail;
-            productToUpdate.ProductRating = value.ProductRating;
             _context.Update(productToUpdate);
             _context.SaveChanges();
             return Ok();
